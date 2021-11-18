@@ -38,7 +38,7 @@ public class ValidPalindrome2 {
     public static boolean isValidSubPalindrome(String s, int left, int right) {
         // traverse the string
         while(left < right) {
-            // check for conflicting characters 
+            // check for conflicting characters
             if(s.charAt(left) != s.charAt(right)) {
                 return false;
             }

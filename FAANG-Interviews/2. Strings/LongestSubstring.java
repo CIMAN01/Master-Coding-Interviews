@@ -92,6 +92,7 @@ public class LongestSubstring {
         for(int right = 0; right < s.length(); right++) {
             // current character the right pointer is directed at
             char currentChar = s.charAt(right);
+            /* *** pattern matching -> finding the unique substring (solve sub problem) *** */
             // index of previously seen character
             int indexOfPrevSeenChar = 0;  // *** declaration linked to if statement to avoid NullPointerException ***
             // if seen map contains the current character
@@ -105,6 +106,7 @@ public class LongestSubstring {
             }
             // always update seen hashmap with the current character and its index during each iteration
             seen.put(currentChar, right);
+            /* *** find length of the longest unique substring (solve main problem) *** */
             // 'right - left' to get the length and  '+ 1' to account for the off-set (index starts at 0)
             longest = Math.max(longest, right - left + 1);
         }
