@@ -86,7 +86,8 @@ public class LinkedListCycle2 {
     public static int detectCycle(Node head) {
         // use a HashSet to store each node during a list traversal
         HashSet<Node> seenNodes = new HashSet<>();
-        Node current = head; // create a pointer node that will traverse the list
+        // create a pointer node that will traverse the list
+        Node current = head;
         // traverse the list as long as we do not come across a repeated node
         while(!seenNodes.contains(current)) { // HashSet initially empty
             // check if list is contains a cycle (if any node is equal to null the list does not contain a cycle)
@@ -104,34 +105,35 @@ public class LinkedListCycle2 {
 
     // Optimal solution for detecting a cycle within a linked list using Floyd’s Tortoise And Hare Algorithm -> time: O(n) | space: O(1)
     public static int detectCycleOp(Node head) {
-        //
+        // edge case where list is empty
         if(head == null) {
             return -1; // return null
         }
-        // use two pointers (slow and fast) to traverse the list
+        // use two pointers (tortoise/slow and hare/fast) to traverse the list
         Node hare = head; // fast pointer
         Node tortoise = head; // slow pointer
-        // do-while loop
+        // use do-while loop instead of while loop
         do {
             // move the tortoise and hare one step forward
             tortoise = tortoise.next;
             hare = hare.next;
             // if hare pointer is equal to null or pointer.next is equal to null (meaning there is a tail value)
             if (hare == null || hare.next == null) {
-                return -1; // break out of entire method with a -1/null returned (there is no cycle)
-            } else { // otherwise, advance the hare one more step
+                return -1; // break out of entire method and return a -1 (null) as there is no cycle
+            }
+            else { // otherwise, advance the hare one more step
                 hare = hare.next; // the hare will now have advanced two steps ahead of the tortoise
             }
         // continue advancing hare and tortoise until they overlap
         } while (tortoise != hare); // once the loop finishes, both the hare and tortoise are at the meeting point list node
         // create two new pointers that will traverse together to find the list node that represent the start of the cycle
-        Node p1 = head, p2 = tortoise; // can also be p2 = hare as they point to the same value
-        // advance p1 and p2 together until they meet or overlap
+        Node p1 = head, p2 = tortoise; // can also be p2 = hare as they point to the same value (both at meeting point node)
+        // advance p1 and p2 together until they meet/overlap
         while(p1 != p2) {
             p1 = p1.next;
             p2 = p2.next;
         }
-        // once p1 and p2 have overlapped we have the node that represent the node of the cycle, return either p1 or p2
+        // once p1 and p2 have met/overlapped we have the node that represent the node of the cycle, so return either p1 or p2
         return p1.getValue()-1; // return the value of the p1 node minus 1 to account for a zero-based index
     }
 
