@@ -52,11 +52,12 @@ public class MaxSubArray {
 
         for(int i = 0; i < arr.length; i++) {
             localMaxSum = localMaxSum + arr[i];
+
             if(globalMaxSum < localMaxSum) {
                 globalMaxSum = localMaxSum;
             }
-            if(localMaxSum<0) {
-                localMaxSum=0;
+            if(localMaxSum < 0) {
+                localMaxSum = 0;
             }
         }
         return globalMaxSum;

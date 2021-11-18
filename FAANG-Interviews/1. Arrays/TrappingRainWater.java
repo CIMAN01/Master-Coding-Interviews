@@ -26,61 +26,65 @@ Constraints:
 
 public class TrappingRainWater {
 
-    // brute force solution -> time: O(n^2) | space: O(1)
+    // Brute force solution -> time: O(n^2) | space: O(1)
     public static int getTrappedRainwater(int[] heights) {
         int totalWater = 0;
-
+        // traverse the entire array
         for(int p = 0; p < heights.length; p++) {
-            int leftP = p, rightP = p;
+            // left and right pointers
+            int left = p, right = p;
+            // maximum left and right pointers
             int maxLeft = 0, maxRight = 0;
-
-            while(leftP >= 0) {
-                maxLeft = Math.max(maxLeft, heights[leftP]);
-                leftP--;
+            // scan left to determine the maximum height to the left of current element (maxLeft)
+            while(left >= 0) {
+                maxLeft = Math.max(maxLeft, heights[left]);
+                left--;
             }
-
-            while(rightP < heights.length) {
-                maxRight = Math.max(maxRight, heights[rightP]);
-                rightP++;
+            // scan right to determine the maximum height to the right of current element (maxRight)
+            while(right < heights.length) {
+                maxRight = Math.max(maxRight, heights[right]);
+                right++;
             }
-
+            // formula to calculate the water at any element in the array when a wall is formed
             int currentWater = Math.min(maxLeft, maxRight) - heights[p];
-
+            // only add positive values (logically negative numbers cannot hold water)
             if(currentWater >= 0) {
                 totalWater += currentWater;
             }
         }
-
         return totalWater;
     }
 
-    // optimal force solution -> time: O(n) | space: O(1)
+    // Optimal force solution -> time: O(n) | space: O(1)
     public static int getTrappedRainwaterOp(int[] heights) {
-        int left = 0, right = heights.length-1;
-        int maxLeft = 0, maxRight = 0;
         int totalWater = 0;
+        // initialize pointers
+        int left = 0, right = heights.length-1; // left and right pointers
+        int maxLeft = 0, maxRight = 0; // maximum left and right pointers
         // iterate until pointers meet (traverse the entire array)
         while(left < right) {
-            // this if statement decides which pointer to operate on (left/right)
-            if(heights[left] <= heights[right]) {
-                // this if statements decides whether to update max or to add water
+            // check which value is larger between right side and left side to determine which side (pointer) to operate on
+            if(heights[left] <= heights[right]) { // if equal, go with left side
+                // the logic that decides whether to update maxLeft or to add water
                 if(heights[left] >= maxLeft) {
                     maxLeft = heights[left];
                 }
                 else {
-                    totalWater += maxLeft - heights[left];
+                    // the new formula to calculate the water at any element in the array when a wall if formed
+                    totalWater += maxLeft - heights[left]; // if check at line 67 dictates that other side has a wall that is taller
                 }
-                left++; // move inward
+                left++; // move pointer inward
             }
             else {
-                // the logic that decides whether to update max or to add water
+                // the logic that decides whether to update maxRights or to add water
                 if(heights[right] >= maxRight) {
                     maxRight = heights[right];
                 }
                 else {
-                    totalWater += maxRight - heights[right];
+                    // the new formula to calculate the water at any element in the array when a wall if formed
+                    totalWater += maxRight - heights[right]; // if check at line 67 dictates that other side has a wall that is taller
                 }
-                right--; // move inward
+                right--; // move pointer inward
             }
         }
         return totalWater;

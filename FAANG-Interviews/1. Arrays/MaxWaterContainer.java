@@ -47,7 +47,7 @@ public class MaxWaterContainer {
         for (int a = 0; a < heights.length; a++) {
             // pointer b for inner loop
             for (int b = a + 1; b < heights.length; b++) {
-                // get height and hidth
+                // get height and width
                 int height = Math.min(heights[a], heights[b]);
                 int width = b - a;
                 // get total area (H x W)
