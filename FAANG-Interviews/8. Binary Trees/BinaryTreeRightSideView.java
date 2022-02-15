@@ -11,8 +11,8 @@ Example 1:
                   1
 		/   \
 	       2     3
-		    /  \
-		   5    4
+		\     \
+		 5     4
 
 Input: root = [1,2,3,null,5,null,4]
 Output: [1,3,4]
