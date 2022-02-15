@@ -8,9 +8,9 @@ Given the root of a binary tree, imagine yourself standing on the right side of 
 
 Example 1:
 
-                  1
+          1
 		/   \
-	       2     3
+	   2     3
 		    /  \
 		   5    4
 
@@ -149,11 +149,11 @@ public class BinaryTreeRightSideView {
         System.out.println("BFS: " + rightSideView(root2)); // [1,3]
         System.out.println("DFS: " + rightSideViewRecursive(root2)); // [1,3]
         // create a new empty binary tree -> []
-        TreeNode root3 = new TreeNode(); // create a null root
+        TreeNode root3 = null; // create a null root
         // return the level order traversal of its nodes as viewed at right side only
         System.out.println();
-        System.out.println("BFS: " + rightSideView(root3)); // [0]
-        System.out.println("DFS: " + rightSideViewRecursive(root3)); /// [0]
+        System.out.println("BFS: " + rightSideView(root3)); // []
+        System.out.println("DFS: " + rightSideViewRecursive(root3)); /// []
     }
 
 }

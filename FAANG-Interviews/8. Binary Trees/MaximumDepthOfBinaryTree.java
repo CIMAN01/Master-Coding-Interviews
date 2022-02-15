@@ -9,13 +9,11 @@ A binary tree's maximum depth is the number of nodes along the longest path from
 
 Example 1:
 
- 
-       3
-     /   \
-    9     20
-         /  \
-        15   7
-
+ 	     3
+       /   \
+	  9	    20
+           /  \
+		  15   7
 
 Input: root = [3,9,20,null,null,15,7]
 Output: 3
@@ -72,15 +70,16 @@ public class MaximumDepthOfBinaryTree {
         root.right = new TreeNode(20);
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
+        System.out.println();
         // find the maximum depth of the tree and print the results
-        System.out.println(maxDepth(root, 0));
+        System.out.println("maxDepth: " + maxDepth(root, 0)); // 3
         // create the tree -> [1,null,2]
         // create a new root node
         TreeNode root2 = new TreeNode(1);
         // populate tree by adding children nodes to the root node
         root2.left = new TreeNode(2);
         // find the maximum depth of the tree and print the results
-        System.out.println(maxDepth(root2)); // 2
+        System.out.println("maxDepth: " + maxDepth(root2)); // 2
     }
 
 }

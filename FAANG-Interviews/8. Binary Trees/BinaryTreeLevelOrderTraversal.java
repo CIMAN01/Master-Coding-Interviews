@@ -7,9 +7,9 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
 
 Example 1:
 
-                  3
+          3
 		/   \
-	       9    20
+	   9    20
 		   /  \
 		  15   7
 
@@ -97,6 +97,7 @@ public class BinaryTreeLevelOrderTraversal {
         root.right = new TreeNode(20);
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
+        System.out.println();
         // return the level order traversal of its nodes
         System.out.println(levelOrder(root)); // [[3],[9,20],[15,7]]
         // create a new binary tree -> [1,null,null]
@@ -104,9 +105,9 @@ public class BinaryTreeLevelOrderTraversal {
         // return the level order traversal of its nodes
         System.out.println(levelOrder(root2)); // [[1]]
         // create a new empty binary tree -> [null]
-        TreeNode root3 = new TreeNode(); // create a null root
+        TreeNode root3 = null; // create a null root
         // return the level order traversal of its nodes
-        System.out.println(levelOrder(root3)); // [[0]]
+        System.out.println(levelOrder(root3)); // []
     }
 
 }
