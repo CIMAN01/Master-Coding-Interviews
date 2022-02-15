@@ -8,9 +8,9 @@ Given the root of a binary tree, imagine yourself standing on the right side of 
 
 Example 1:
 
-          1
+                  1
 		/   \
-	   2     3
+	       2     3
 		    /  \
 		   5    4
 
